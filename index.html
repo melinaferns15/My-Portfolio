@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melina's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <style> 
+    .footer {
+    margin-top: 100px;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #020617, #0f172a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    text-align: center;
+    padding: 25px 40px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    box-shadow:
+        0 0 25px rgba(0, 255, 255, 0.35),
+        0 0 50px rgba(0, 255, 255, 0.15);
+}
+
+.footer-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.footer-tagline {
+    margin-top: 6px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+.footer-copy {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+
+   #certificates {
+    padding: 70px 20px;
+    text-align: center;
+}
+
+#certificates h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;              /* MORE SPACE BETWEEN BLOCKS */
+    max-width: 1100px;
+    margin: auto;
+    padding: 10px;
+}
+
+.cert-card {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 18px;
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    box-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.25),
+        0 0 40px rgba(0, 255, 255, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.cert-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow:
+        0 0 30px rgba(0, 255, 255, 0.6),
+        0 0 60px rgba(0, 255, 255, 0.35);
+}
+.cert-card {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 22px;          /* MORE INNER SPACE */
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    box-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.25),
+        0 0 40px rgba(0, 255, 255, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.cert-card:hover {
+    transform: translateY(-8px);
+}
+
+.cert-card img {
+    width: 100%;
+    height: 180px;   /* MEDIUM SIZE */
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.cert-card p {
+    margin-top: 16px;       /* SPACE BELOW IMAGE */
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+
+    html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+section {
+    overflow-x: hidden;
+}
+
+    #thankYouMessage{
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.3rem;
+    color: #67e8f9;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#thankYouMessage.show{
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+    .contact{
+    padding: 80px 20px;
+    background: linear-gradient(to right, #4444ad, #181899);
+    color: white;
+    text-align: center;
+}
+
+.contact h2{
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    background: linear-gradient(90deg, #67e8f9, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-container{
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact input, 
+.contact textarea{
+    padding: 12px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.contact input::placeholder,
+.contact textarea::placeholder{
+    color: #ddd;
+}
+
+.contact button{
+    padding: 15px;
+    background: linear-gradient(90deg, #67e8f9, #c084fc);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact button:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+    .slider-container{
+    width: 100%;
+    overflow: hidden;
+    margin: 50px auto;  /* spacing from other sections */
+}
+
+.slider-track{
+    display: flex;
+    gap: 40px;
+    width: max-content;  
+    animation: scroll 25s linear infinite;
+}
+
+.slider-track img{
+    width:260px;
+    height:180px;
+    object-fit: contain;
+    background: rgba(255,255,255,0.08);
+    padding:12px;
+    border-radius:14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+    flex-shrink:0;
+}
+
+@keyframes scroll{
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-50%);
+    }
+}
+
+/* optional gallery heading style */
+.gallery h2{
+    text-align: center;
+    font-size: 2.6rem;
+    margin-bottom: 40px;
+    background: linear-gradient(90deg, #67e8f9, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+    
+
+
+        .projects-certificates{
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+/* GLASS CARDS */
+.projects, .certificates{
+    flex: 1;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 22px;
+    padding: 35px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.projects:hover, .certificates:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+.projects h3, .certificates h3{
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #67e8f9;
+}
+
+.project-card{
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    font-size: 1.3rem;
+    color: #e0f2fe;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glow animation */
+.project-card::before{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(60deg, #67e8f9, #c084fc, #fde68a, #fb7185);
+    animation: glow 6s linear infinite;
+    filter: blur(60px);
+    opacity: 0.6;
+    z-index: 0;
+}
+
+.project-card p{
+    position: relative;
+    z-index: 1; /* above the glow */
+}
+
+/* Hover effect */
+.project-card:hover{
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(103,232,249,0.5);
+}
+
+/* Glow animation keyframes */
+@keyframes glow{
+    0%{ transform: rotate(0deg); }
+    50%{ transform: rotate(180deg); }
+    100%{ transform: rotate(360deg); }
+}
+
+
+/* CERTIFICATE CARDS */
+.certificate-card{
+    background: linear-gradient(135deg, rgba(192,132,252,0.15), rgba(103,232,249,0.15));
+    padding: 18px 22px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    font-size: 1.15rem;
+    color: #f1f5f9;
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.certificate-card{
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 18px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificate-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(192,132,252,0.5);
+}
+
+.certificate-card img{
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+
+.certificate-card:hover{
+    transform: translateX(8px);
+    box-shadow: 0 0 25px rgba(192,132,252,0.5);
+}
+
+     .details{
+    max-width: 90vw;
+    margin: auto;
+    margin-top: 120px;
+}
+
+.details h2{
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 60px;
+    background: linear-gradient(90deg, #67e8f9, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.details-container{
+    display: flex;
+    flex-wrap: wrap;       /* VERY IMPORTANT for Projects + Certificates to appear below on small screens */
+    gap: 40px;
+    justify-content: center;
+}
+.details-container > div{
+    flex: 1 1 300px;       /* Allows boxes to shrink/grow responsively */
+    min-width: 280px;
+}
+
+/* GLASS CARDS */
+.hobbies, .skills{
+    flex: 1;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 22px;
+    padding: 35px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hobbies:hover, .skills:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+.hobbies h3, .skills h3{
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #e0f2fe;
+}
+
+/* HOBBIES */
+.hobby{
+    background: linear-gradient(135deg, rgba(103,232,249,0.15), rgba(192,132,252,0.15));
+    padding: 16px 22px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hobby:hover{
+    transform: scale(1.04);
+    box-shadow: 0 0 20px rgba(103,232,249,0.4);
+}
+
+/* SKILLS */
+.skill{
+    margin-bottom: 25px;
+}
+
+.skill span{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    color: #e5e7eb;
+}
+
+.progress{
+    height: 14px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* GLOWING BARS */
+.progress-bar{
+    height: 100%;
+    width: 0;
+    border-radius: 20px;
+    transition: width 1.5s ease-in-out;
+}
+
+
+/* SKILL LEVELS */
+.html{ width: 90%; background: linear-gradient(90deg, #67e8f9, #22d3ee); }
+.css{ width: 85%; background: linear-gradient(90deg, #c084fc, #a855f7); }
+.js{ width: 70%; background: linear-gradient(90deg, #fde68a, #facc15); }
+.c{ width: 75%; background: linear-gradient(90deg, #fb7185, #f43f5e); }
+
+.skill:nth-child(2) .progress-bar{
+    background: linear-gradient(90deg, #67e8f9, #22d3ee);
+}
+.skill:nth-child(3) .progress-bar{
+    background: linear-gradient(90deg, #c084fc, #a855f7);
+}
+.skill:nth-child(4) .progress-bar{
+    background: linear-gradient(90deg, #fde68a, #facc15);
+}
+.skill:nth-child(5) .progress-bar{
+    background: linear-gradient(90deg, #fb7185, #f43f5e);
+}
+
+
+
+
+
+
+        .about{
+    max-width: 70vw;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.about h2{
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.timeline{
+    position: relative;
+    margin-left: 30px;
+}
+
+.timeline::before{
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(#9ae6ff, #b983ff);
+}
+
+.timeline-box{
+    display: flex;
+    gap: 30px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.dot{
+    width: 16px;
+    height: 16px;
+    background: #9ae6ff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #9ae6ff;
+    margin-top: 6px;
+}
+
+.content{
+    background: rgba(255,255,255,0.08);
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    max-width: 600px;
+}
+
+.content h3{
+    color: #9ae6ff;
+    margin-bottom: 8px;
+}
+
+.content p{
+    line-height: 1.6;
+    color: #e6f1ff;
+}
+
+        nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover{
+    color: #9ae6ff;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+        nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 80px;
+    background: rgba(0,0,0,0.4);
+}
+
+.left{
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.right ul{
+    display: flex;
+}
+
+.right ul li{
+    list-style: none;
+    margin: 0 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.right ul li:hover{
+    color: #9ae6ff;
+}
+
+        .introSection {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 100px 0;
+        }
+
+        .introImage img {
+            width: 360px;
+            height: 360px;
+            object-fit: cover;
+            border-radius: 22px;
+            border: 3px solid #9ae6ff;
+            box-shadow:
+                0 0 20px rgba(154, 230, 255, 0.6),
+                0 0 40px rgba(154, 230, 255, 0.4),
+                0 0 60px rgba(154, 230, 255, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .introImage img:hover {
+            transform: scale(1.07);
+            box-shadow:
+                0 0 30px rgba(154, 230, 255, 0.9),
+                0 0 70px rgba(154, 230, 255, 0.6);
+        }
+
+        .introText {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .introText span {
+            background: linear-gradient(90deg, #9ae6ff, #b983ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .introText p {
+            font-size: 1.15rem;
+            font-weight: 300;
+            margin-top: 20px;
+            color: #d6e6f2;
+            max-width: 520px;
+        }
+
+
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #f5f5f5;
+            font-family: 'Poppins', sans-serif;
+        }
+        body{
+    background: linear-gradient(135deg, #0f172a, #1e1b4b);
+    color: #f1f5f9;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+        nav {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 23px;
+        }
+
+        .left {
+            font-size: 1.5rem;
+        }
+
+        .firstSection {
+            display: flex;
+            justify-self: space-around;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+       <nav>
+    <div class="left">Melina's Portfolio</div>
+    <div class="right">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#details">Details</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+
+    </header>
+    <section id="home" class="introSection">
+
+        <div class="introText">
+            Hi, I'm <span>Melina Fernandes</span><br>
+            A Creative Engineering Student
+            <p>
+                I love expressing ideas through creativity, visuals, and technology.
+                This portfolio showcases my skills, interests, and achievements.
+            </p>
+        </div>
+
+        <div class="introImage">
+            <img src="images/dp.jpeg" alt="My Photo">
+        </div>
+
+    </section>
+    <section id="about" class="about">
+
+    <h2>My Academic Journey</h2>
+
+    <div class="timeline">
+
+        <div class="timeline-box">
+            <span class="dot"></span>
+            <div class="content">
+                <h3>School</h3>
+                <p>
+                    Completed my schooling at <strong>St. Joseph's High School</strong>,
+                    where I developed discipline and a strong academic base.
+                </p>
+            </div>
+        </div>
+
+        <div class="timeline-box">
+            <span class="dot"></span>
+            <div class="content">
+                <h3>Junior College</h3>
+                <p>
+                    Studied science at <strong>PACE Junior College</strong>,
+                    which strengthened my interest in technology and creativity.
+                </p>
+            </div>
+        </div>
+
+        <div class="timeline-box">
+            <span class="dot"></span>
+            <div class="content">
+                <h3>Engineering</h3>
+                <p>
+                    Currently pursuing engineering at
+                    <strong>Fr. Conceicao Rodrigues College of Engineering</strong>
+                    in <strong>Computer Engineering</strong>.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<section id="details" class="details">
+
+    <h2>Hobbies, Skills, Projects & Certificates</h2>
+
+    <div class="details-container">
+
+        <!-- HOBBIES -->
+        <div class="hobbies">
+            <h3>My Hobbies</h3>
+            <div class="hobby">💃 Dance</div>
+            <div class="hobby">🎨 Sketching</div>
+            <div class="hobby">🏀 Sports</div>
+            <div class="hobby">🎸 Music (Guitar)</div>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="skills">
+            <h3>My Skills</h3>
+            <div class="skill"><span>HTML</span><div class="progress"><div class="progress-bar" data-skill="90%"></div></div></div>
+            <div class="skill"><span>CSS</span><div class="progress"><div class="progress-bar" data-skill="85%"></div></div></div>
+            <div class="skill"><span>JavaScript</span><div class="progress"><div class="progress-bar" data-skill="70%"></div></div></div>
+            <div class="skill"><span>C Language</span><div class="progress"><div class="progress-bar" data-skill="75%"></div></div></div>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="projects">
+            <h3>Projects</h3>
+            <div class="project-card"><p>Coming Soon 🚀</p></div>
+        </div>
+
+        <!-- CERTIFICATES -->
+        <section id="certificates">
+    <h2>Certificates</h2>
+
+    <div class="cert-grid">
+
+        <div class="cert-card">
+            <img src="images/bitnbuild.jpeg" alt="Bit & Build Certificate">
+            <p>Bit & Build</p>
+        </div>
+
+        <div class="cert-card">
+            <img src="images/hackintop.jpeg" alt="Hack Into P-Cell Certificate">
+            <p>Hack Into P-Cell</p>
+        </div>
+
+        <div class="cert-card">
+            <img src="images/matlab1.jpeg" alt="MATLAB Certificate">
+            <p>MATLAB Onramp</p>
+        </div>
+
+        <div class="cert-card">
+            <img src="images/matlab2.jpeg" alt="MATLAB Certificate">
+            <p>MATLAB Basics</p>
+        </div>
+
+        <div class="cert-card">
+            <img src="images/matlab3.jpeg" alt="MATLAB Certificate">
+            <p>MATLAB Programming</p>
+        </div>
+
+        <div class="cert-card">
+            <img src="images/matlab4.jpeg" alt="MATLAB Certificate">
+            <p>MATLAB Advanced</p>
+        </div>
+
+    </div>
+</section>
+
+
+
+</section>
+<section id="gallery" class="gallery">
+
+    <h2>My Gallery</h2>
+
+    <div class="slider">
+    <div class="slider-track">
+        <img src="images/cafe.jpeg" alt="Gallery Image 1">
+            <img src="images/cake.jpeg" alt="Gallery Image 2">
+            <img src="images/tree.jpeg" alt="Gallery Image 3">
+            <img src="images/cat.jpeg" alt="Gallery Image 4">
+            <img src="images/water.jpeg" alt="Gallery Image 5">
+            <img src="images/sushi.jpeg" alt="Gallery Image 6">
+            <img src="images/cake.jpeg" alt="Gallery Image 7">
+
+       <img src="images/cafe.jpeg" alt="Gallery Image 1">
+            <img src="images/cake.jpeg" alt="Gallery Image 2">
+            <img src="images/tree.jpeg" alt="Gallery Image 3">
+            <img src="images/cat.jpeg" alt="Gallery Image 4">
+            <img src="images/water.jpeg" alt="Gallery Image 5">
+            <img src="images/sushi.jpeg" alt="Gallery Image 6">
+            <img src="images/cake.jpeg" alt="Gallery Image 7">
+    
+    </div>
+</div>
+
+</section>
+<section id="contact" class="contact">
+    <h2>Contact Me</h2>
+
+    <div class="contact-container">
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+
+        <div id="thankYouMessage">Thank you! 💙 Your message has been sent.</div>
+    </div>
+</section>
+
+<script>
+   (function(){
+      emailjs.init("HmFkx4TcPFUINriVc");
+   })();
+</script>
+
+
+
+<script>
+    const skillSection = document.querySelector('.skills');
+    const progressBars = document.querySelectorAll('.progress-bar');
+
+    function showSkills() {
+        const sectionTop = skillSection.getBoundingClientRect().top;
+        const screenHeight = window.innerHeight;
+
+        if (sectionTop < screenHeight - 100) {
+            progressBars.forEach(bar => {
+                bar.style.width = bar.dataset.skill;
+            });
+            window.removeEventListener('scroll', showSkills);
+        }
+    }
+
+    window.addEventListener('scroll', showSkills);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+    emailjs.init("HmFkx4TcPFUINriVc"); // your public key
+})();
+
+const form = document.getElementById("contactForm");
+const thankYou = document.getElementById("thankYouMessage");
+
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    emailjs.sendForm(
+        "service_0via4yr",      // service ID
+        "template_hyl6hw6",     // template ID
+        this
+    ).then(function(){
+        thankYou.classList.add("show");
+        form.reset();
+        setTimeout(() => {
+            thankYou.classList.remove("show");
+        }, 4000);
+    }, function(error){
+        alert("❌ Email failed to send");
+        console.log(error);
+    });
+});
+</script>
+
+
+<footer class="footer">
+    <div class="footer-content">
+        <p class="footer-name">Melina Fernandes</p>
+        <p class="footer-tagline">Designed & Built by me</p>
+        
+    </div>
+</footer>
+
+
+
+
+</body>
+
+</html>
